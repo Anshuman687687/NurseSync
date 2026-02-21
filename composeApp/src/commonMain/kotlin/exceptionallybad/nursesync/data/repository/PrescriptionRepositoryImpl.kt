@@ -1,6 +1,7 @@
 package exceptionallybad.nursesync.data.repository
 
 import exceptionallybad.nursesync.domain.model.*
+import exceptionallybad.nursesync.domain.model.enums.LogStatus
 import exceptionallybad.nursesync.domain.repository.PrescriptionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf

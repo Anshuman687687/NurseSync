@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import exceptionallybad.nursesync.feature.auth.ui.LoginScreen
 
 import exceptionallybad.nursesync.feature.dashboard.ui.DashboardScreen
+import exceptionallybad.nursesync.feature.discharge.ui.DischargeSummaryScreen
 
 @Composable
 fun NavGraph(
@@ -21,7 +22,7 @@ fun NavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Login,
+        startDestination = Screen.Dashboard,
         modifier = modifier,
     ) {
         composable<Screen.Login> {
@@ -47,6 +48,12 @@ fun NavGraph(
         }
         composable<Screen.Chat> {
             PlaceholderScreen("AI Chat Screen")
+        }
+        composable<Screen.DischargeSummary> {
+            DischargeSummaryScreen(
+                onBackClick = { navController.popBackStack() },
+                onShareClick = { /* Handle share */ }
+            )
         }
         composable<Screen.Settings> {
             PlaceholderScreen("Settings Screen")
