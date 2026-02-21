@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discharge Summary Generator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d9488", // Teal 600
+                        "primary-dark": "#0f766e", // Teal 700
+                        "accent-mint": "#22d3ee", // Vibrant Cyan/Mint
+                        "accent-neon": "#4ade80", // Neon Mint Green
+                        "background-warm": "#f8fafc", // Cool medicinal white
+                        "card-warm": "#ffffff",
+                        "paper-white": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(13, 148, 136, 0.08)',
+                        'paper': '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03)',
+                        'neon': '0 0 15px -3px rgba(34, 211, 238, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Lexend', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: theme('colors.background-warm');
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(13, 148, 136, 0.2);
+            border-radius: 10px;
+        }
+        .gradient-teal {
+            background: linear-gradient(135deg, #0d9488 0%, #22d3ee 100%);
+        }
+        .badge-mint {
+            background: linear-gradient(90deg, #ecfdf5 0%, #f0fdfa 100%);
+            border: 1px solid #99f6e4;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-slate-800 min-h-screen flex flex-col">
+<div class="h-12 w-full flex items-center justify-between px-6 shrink-0 bg-background-warm">
+<span class="text-sm font-semibold text-slate-500">9:41</span>
+<div class="flex gap-1.5 items-center text-slate-500">
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_very_low</span>
+</div>
+</div>
+<header class="sticky top-0 z-30 bg-background-warm/80 ios-blur border-b border-teal-50">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto w-full">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-teal-50 transition-colors text-slate-600">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight text-slate-800">Discharge Summary</h1>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-teal-50 transition-colors text-primary">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto w-full max-w-md mx-auto custom-scrollbar pb-44">
+<section class="p-4">
+<div class="bg-card-warm border border-teal-100 rounded-xl p-4 flex gap-4 items-center shadow-soft">
+<div class="relative">
+<div class="bg-primary/10 rounded-full p-1 border-2 border-primary/20">
+<div class="size-16 rounded-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBStdGWP1OXXTCw5NBAi6lowHewssSUZGc9SIApircWaLoBRPGAbhG6ip94Mi2t-dem_muo5hKoOAva5UEepxEcYGeTkRK0Ra-FNcfbgdxRLF5KzEhT4TZKwPtd9KQ6HuqY68e6Tid3sQPOrvN49hOyiQ2JLL31Sv1Gl0D34zbxZI8sQoltjTA-2MA1aqCsBP5urGe1grrDHO5xg-TRfTxSLHeNsnzeVZeEqZjXxBAOGQjjQu2dZ89XdFUZhk3lA2URLqy0l_Xj82g')"></div>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-green-500 size-4 rounded-full border-2 border-card-warm"></div>
+</div>
+<div class="flex-1">
+<h2 class="text-lg font-bold leading-none mb-1 text-slate-900">Robert Sterling</h2>
+<p class="text-xs text-slate-500 font-medium tracking-wide">ID: #882910 • Room 402-B</p>
+<div class="mt-2 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-wider text-slate-600">Admitted Oct 24</span>
+<span class="px-2 py-0.5 rounded-full badge-mint text-teal-700 text-[10px] font-extrabold uppercase tracking-wider">Ready for Review</span>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 py-2">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Synthesis Status</h3>
+<span class="text-xs font-bold text-primary">75% Complete</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-3 bg-card-warm border border-teal-50 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-teal-500 font-variation-fill-1">check_circle</span>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-800">Clinical Course &amp; History</p>
+<p class="text-xs text-slate-500">Extracted from 14 voice logs</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-card-warm border border-teal-50 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-teal-500 font-variation-fill-1">check_circle</span>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-800">Treatments &amp; Labs</p>
+<p class="text-xs text-slate-500">All metrics updated today</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-card-warm border border-teal-50 rounded-lg border-l-4 border-l-cyan-400 shadow-sm">
+<span class="material-symbols-outlined text-cyan-500">pending</span>
+<div class="flex-1">
+<p class="text-sm font-semibold text-slate-800">Medication Reconciliation</p>
+<p class="text-xs text-teal-700">2 pending confirmations</p>
+</div>
+<button class="text-xs font-bold text-primary px-3 py-1 bg-teal-50 rounded-full hover:bg-teal-100 transition-colors">FIX</button>
+</div>
+</div>
+</section>
+<section class="p-4 mt-2">
+<button class="w-full gradient-teal hover:opacity-90 text-white flex items-center justify-center gap-3 py-4 rounded-xl shadow-lg shadow-teal-100 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined fill-1">auto_awesome</span>
+<span class="font-bold text-base tracking-wide">Generate AI Summary</span>
+</button>
+<p class="text-center text-[10px] text-slate-400 mt-3 px-6 italic">
+                AI will compile voice notes, vitals, and physician orders into a structured medical document.
+            </p>
+</section>
+<section class="p-4">
+<div class="flex items-center justify-between mb-3 px-1">
+<h3 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Document Preview</h3>
+<button class="text-xs font-bold text-primary flex items-center gap-1 hover:text-primary-dark">
+<span class="material-symbols-outlined text-sm">edit</span> EDIT DRAFT
+                </button>
+</div>
+<div class="bg-paper-white border border-slate-100 rounded-sm p-8 shadow-paper relative overflow-hidden">
+<div class="absolute inset-0 pointer-events-none border-[12px] border-teal-50/20"></div>
+<div class="border-b-2 border-slate-100 pb-4 mb-6 text-center">
+<h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-2">Official Medical Record</h4>
+<p class="text-xl font-serif italic text-slate-800">St. Mary's Medical Center</p>
+</div>
+<div class="space-y-6 text-sm leading-relaxed text-slate-700">
+<div>
+<h5 class="font-bold text-slate-900 border-b border-slate-100 mb-2 text-xs tracking-wider uppercase">Clinical Course</h5>
+<p class="leading-6">Patient was admitted following an acute exacerbation of COPD. Initial treatment included IV methylprednisolone and nebulized bronchodilators. Oxygen saturation improved from 88% to 94% on room air over 72 hours.</p>
+</div>
+<div>
+<h5 class="font-bold text-slate-900 border-b border-slate-100 mb-2 text-xs tracking-wider uppercase">Discharge Medications</h5>
+<ul class="list-disc pl-5 space-y-1.5 marker:text-teal-400">
+<li>Prednisone 40mg PO daily (5-day taper)</li>
+<li>Salmeterol/Fluticasone 250/50 1 puff BID</li>
+<li>Albuterol 90mcg Inhaler PRN</li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-slate-900 border-b border-slate-100 mb-2 text-xs tracking-wider uppercase">Follow-up Instructions</h5>
+<p class="leading-6">Patient to follow up with primary care physician within 7 days. Return to ED if experiencing increased shortness of breath or fever &gt;101.5°F.</p>
+</div>
+<div class="pt-10 mt-8 border-t border-dashed border-slate-200 flex justify-between items-end">
+<div class="w-1/2">
+<p class="text-[9px] text-slate-400 uppercase tracking-widest mb-4">Physician Signature</p>
+<div class="h-px bg-slate-300 w-full"></div>
+</div>
+<div class="text-right">
+<p class="text-[9px] text-slate-400 uppercase tracking-widest">Date Generated</p>
+<p class="font-bold text-slate-800">Oct 27, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 ios-blur border-t border-teal-50 pb-8 px-4 shadow-[0_-5px_20px_-10px_rgba(13,148,136,0.1)]">
+<div class="flex gap-3 pt-4 mb-4 max-w-md mx-auto">
+<button class="flex-1 bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm transition-colors border border-teal-200/50">
+<span class="material-symbols-outlined text-xl text-teal-600">picture_as_pdf</span> PDF
+            </button>
+<button class="flex-1 bg-slate-50 hover:bg-slate-100 text-slate-700 font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm transition-colors border border-slate-200/50">
+<span class="material-symbols-outlined text-xl text-slate-500">fax</span> FAX
+            </button>
+<button class="flex-[1.5] gradient-teal hover:opacity-90 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md shadow-teal-200/50 transition-colors">
+<span class="material-symbols-outlined text-xl">cloud_upload</span> SAVE TO EHR
+            </button>
+</div>
+<div class="flex items-center justify-around max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 text-slate-400 py-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-semibold">Patients</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 py-1" href="#">
+<span class="material-symbols-outlined">mic</span>
+<span class="text-[10px] font-semibold">Voice Log</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary py-1 relative" href="#">
+<span class="material-symbols-outlined font-variation-fill-1 text-teal-600">description</span>
+<span class="text-[10px] font-bold">Reports</span>
+<div class="absolute -top-0.5 right-0.5 size-1.5 bg-accent-mint rounded-full ring-2 ring-white"></div>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-semibold">Settings</span>
+</a>
+</div>
+</nav>
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-300 rounded-full z-50"></div>
+
+</body></html>

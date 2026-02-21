@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scanner - Teal &amp; Mint Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#0d9488",
+                "neon-cyan": "#22d3ee",
+                "mint-green": "#f0fdf4",
+                "mint-text": "#166534",
+                "mint-border": "#bbf7d0",
+                "medical-teal": "#0f766e",
+                "warm-cream": "#f8fafc",
+                "warm-parchment": "#f1f5f9",
+                "warm-border": "#e2e8f0",
+              },
+              fontFamily: {
+                "display": ["Lexend", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: theme('colors.warm-cream');
+        }
+        .scanner-frame {
+            border: 2px solid rgba(34, 211, 238, 0.2);
+            box-shadow: 0 0 0 9999px rgba(15, 23, 42, 0.8);
+        }
+        .scan-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+            position: absolute;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 0 15px #22d3ee;
+        }
+        @keyframes scan {
+            0%, 100% { top: 0%; }
+            50% { top: 100%; }
+        }
+        .animate-scan {
+            animation: scan 4s ease-in-out infinite;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-slate-800 min-h-screen flex flex-col overflow-hidden">
+<header class="flex items-center justify-between px-5 pt-12 pb-5 bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-warm-border">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center size-10 bg-slate-50 border border-warm-border rounded-full active:scale-95">
+<span class="material-symbols-outlined text-slate-600 text-[20px]">arrow_back_ios_new</span>
+</button>
+<div>
+<h1 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Scanning Patient</h1>
+<h2 class="text-base font-bold text-slate-900 leading-tight">Sarah Jenkins <span class="text-xs font-medium text-slate-500 ml-1">#ID-8829</span></h2>
+</div>
+</div>
+<button class="p-2.5 bg-cyan-50 text-cyan-700 rounded-full border border-cyan-100">
+<span class="material-symbols-outlined font-variation-fill">flashlight_on</span>
+</button>
+</header>
+<main class="relative flex-1 bg-slate-950 overflow-hidden flex flex-col justify-center items-center">
+<div class="absolute inset-0 w-full h-full bg-slate-900 flex items-center justify-center overflow-hidden">
+<div class="relative w-full h-full">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-1/2 bg-cyan-500/5 border border-cyan-500/10 rounded-lg flex items-center justify-center">
+<div class="w-full h-full flex flex-col gap-4 p-8 opacity-10">
+<div class="h-4 w-1/3 bg-white rounded"></div>
+<div class="h-4 w-full bg-white rounded"></div>
+<div class="h-4 w-5/6 bg-white rounded"></div>
+<div class="h-4 w-2/3 bg-white rounded"></div>
+</div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-1/2 scanner-frame rounded-2xl pointer-events-none">
+<div class="absolute -top-1 -left-1 w-10 h-10 border-t-4 border-l-4 border-neon-cyan rounded-tl-2xl shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
+<div class="absolute -top-1 -right-1 w-10 h-10 border-t-4 border-r-4 border-neon-cyan rounded-tr-2xl shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
+<div class="absolute -bottom-1 -left-1 w-10 h-10 border-b-4 border-l-4 border-neon-cyan rounded-bl-2xl shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
+<div class="absolute -bottom-1 -right-1 w-10 h-10 border-b-4 border-r-4 border-neon-cyan rounded-br-2xl shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
+<div class="scan-line animate-scan"></div>
+</div>
+</div>
+</div>
+<div class="absolute top-8 px-5 py-2.5 bg-slate-900/60 backdrop-blur-md rounded-full border border-white/20 z-10">
+<p class="text-[11px] text-white font-semibold tracking-wider uppercase">Align prescription in frame</p>
+</div>
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-[42%] left-[20%] px-3 py-1.5 bg-cyan-500/90 text-white text-[10px] font-bold rounded-full shadow-[0_0_15px_rgba(6,182,212,0.4)] border border-cyan-400">
+            Amoxicillin detected
+        </div>
+<div class="absolute top-[55%] right-[25%] px-3 py-1.5 bg-cyan-500/90 text-white text-[10px] font-bold rounded-full shadow-[0_0_15px_rgba(6,182,212,0.4)] border border-cyan-400">
+            500mg extraction
+        </div>
+</div>
+</main>
+<section class="bg-white border-t border-warm-border rounded-t-[2.5rem] z-20 shadow-[0_-10px_40px_rgba(0,0,0,0.08)] pb-8 -mt-8 relative">
+<div class="flex justify-center py-4">
+<div class="w-10 h-1 bg-slate-200 rounded-full"></div>
+</div>
+<div class="px-6 pb-2">
+<div class="flex items-center justify-between mb-5">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center size-8 bg-cyan-50 rounded-lg">
+<span class="material-symbols-outlined text-cyan-600 text-xl font-variation-fill">psychology</span>
+</div>
+<h3 class="text-lg font-bold text-slate-800">Review Extraction</h3>
+</div>
+<span class="px-2.5 py-1 bg-mint-green text-mint-text text-[10px] font-bold rounded-full border border-mint-border tracking-tight">AI VERIFIED</span>
+</div>
+<div class="space-y-4 mb-8">
+<div class="p-4 bg-slate-50/50 rounded-2xl border border-warm-border shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[15px] font-bold text-slate-900">Amoxicillin (Antibiotic)</span>
+<span class="text-xs font-semibold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded">500mg • 3x Daily</span>
+</div>
+<div class="mt-3 flex items-start gap-3 p-3 bg-red-50 border border-red-100 rounded-xl">
+<span class="material-symbols-outlined text-red-600 text-xl">warning</span>
+<p class="text-xs text-red-900 leading-normal">
+<span class="font-bold">Allergy Alert:</span> Patient EHR lists Penicillin allergy. High risk of cross-reactivity.
+                    </p>
+</div>
+</div>
+<div class="p-4 bg-slate-50/50 rounded-2xl border border-warm-border shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[15px] font-bold text-slate-900">Ibuprofen</span>
+<span class="text-xs font-semibold text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded">400mg • PRN</span>
+</div>
+<div class="mt-3 flex items-start gap-3 p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
+<span class="material-symbols-outlined text-emerald-600 text-xl">check_circle</span>
+<p class="text-xs text-emerald-900 leading-normal">
+<span class="font-bold">Dosage OK:</span> Extracted dose matches post-op protocols.
+                    </p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 bg-teal-600 py-4 rounded-2xl text-white font-bold shadow-lg shadow-teal-900/10 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">add_task</span>
+                Log to EHR
+            </button>
+<button class="px-5 py-4 bg-white text-slate-700 rounded-2xl border border-warm-border shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-xl">edit_note</span>
+</button>
+</div>
+</div>
+</section>
+<nav class="flex gap-2 border-t border-warm-border bg-white/95 backdrop-blur-lg px-6 pb-10 pt-3 z-50">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<p class="text-[10px] font-bold leading-normal">Patients</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-teal-600" href="#">
+<span class="material-symbols-outlined text-[24px] font-variation-fill">document_scanner</span>
+<p class="text-[10px] font-bold leading-normal">Scanner</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+<p class="text-[10px] font-bold leading-normal">Voice</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">history</span>
+<p class="text-[10px] font-bold leading-normal">History</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<p class="text-[10px] font-bold leading-normal">Menu</p>
+</a>
+</nav>
+<div class="fixed bottom-[32%] left-0 right-0 flex items-center justify-center gap-10 z-30 pointer-events-none">
+<button class="pointer-events-auto flex items-center justify-center rounded-full size-12 bg-white/10 backdrop-blur-xl border border-white/20 text-white active:scale-90 transition-transform shadow-lg">
+<span class="material-symbols-outlined text-xl">image</span>
+</button>
+<div class="relative flex items-center justify-center">
+<div class="absolute size-24 rounded-full border-2 border-cyan-400/40"></div>
+<button class="pointer-events-auto flex items-center justify-center rounded-full size-20 bg-white border-[6px] border-slate-900/10 shadow-2xl active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-4xl text-slate-900">camera</span>
+</button>
+</div>
+<button class="pointer-events-auto flex items-center justify-center rounded-full size-12 bg-white/10 backdrop-blur-xl border border-white/20 text-white active:scale-90 transition-transform shadow-lg">
+<span class="material-symbols-outlined text-xl">sync</span>
+</button>
+</div>
+
+</body></html>
