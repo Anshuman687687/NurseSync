@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased bg-[#F0F4F8];
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .font-heading {
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
