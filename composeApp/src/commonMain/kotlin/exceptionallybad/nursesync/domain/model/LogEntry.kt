@@ -1,9 +1,37 @@
 package exceptionallybad.nursesync.domain.model
 
 import exceptionallybad.nursesync.domain.model.enums.ClinicalAction
+import exceptionallybad.nursesync.domain.model.enums.LogStatus
 import kotlinx.datetime.Instant
+import kotlinx.serialization.Serializable
 
-// -- LogEntry (the core unit) --
+@Serializable
+data class StructuredLogData(
+    val action: ClinicalAction,
+    val medication: MedicationInfo? = null,
+    val vitals: VitalsInfo? = null,
+    val notes: String? = null,
+)
+
+@Serializable
+data class MedicationInfo(
+    val drugName: String,
+    val dosage: String,
+    val route: String,
+    val administeredAt: Instant,
+)
+
+@Serializable
+data class VitalsInfo(
+    val temperature: Float? = null,
+    val bloodPressureSystolic: Int? = null,
+    val bloodPressureDiastolic: Int? = null,
+    val heartRate: Int? = null,
+    val respiratoryRate: Int? = null,
+    val oxygenSaturation: Float? = null,
+    val painScore: Int? = null,
+)
+
 data class LogEntry(
     val id: String,
     val shiftId: String,
@@ -13,16 +41,7 @@ data class LogEntry(
     val editedTranscript: String?,
     val audioFilePath: String?,
     val structuredData: StructuredLogData,
-    val confidenceScore: Float,         // 0.0–1.0
+    val confidenceScore: Float,
     val flaggedForReview: Boolean,
-    val status: LogStatus,              // DRAFT, CONFIRMED, AMENDED
+    val status: LogStatus,
 )
-
-data class StructuredLogData(
-    val action: ClinicalAction,         // MEDICATION, VITALS, DRESSING, OBSERVATION…
-    val medication: MedicationInfo?,
-    val vitals: VitalsInfo?,
-    val notes: String?,
-)
-
-enum class LogStatus { DRAFT, CONFIRMED, AMENDED }
